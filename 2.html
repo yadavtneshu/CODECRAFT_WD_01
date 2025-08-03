@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blissible - Redefining Beauty</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; scroll-behavior: smooth; }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0; width: 100%;
+      background: transparent;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 30px;
+      z-index: 1000;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav.scrolled { background: #ff4da6; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+    nav .logo { font-size: 28px; font-weight: bold; color: white; }
+    nav ul { list-style: none; display: flex; }
+    nav ul li { margin-left: 20px; }
+    nav ul li a { text-decoration: none; color: white; font-size: 18px; transition: color 0.3s; }
+    nav ul li a:hover { color: #ffe600; }
+    .menu-toggle { display: none; font-size: 28px; color: white; cursor: pointer; }
+
+    /* Hero Section */
+    .hero {
+      background: url('https://picsum.photos/1600/900?random=https://www.freepik.com/premium-photo/lipstick-makeup-brushes-palette-pink-background_3652018.htm') no-repeat center center/cover;
+      height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      color: white;
+    }
+    .hero h1 { font-size: 50px; margin-bottom: 20px; }
+    .hero p { font-size: 20px; margin-bottom: 30px; }
+    .hero button {
+      padding: 15px 30px; font-size: 18px; background: #ff4da6;
+      color: white; border: none; border-radius: 30px; cursor: pointer;
+      transition: background 0.3s;
+    }
+    .hero button:hover { background: #e60073; }
+
+    /* Products Section */
+    .products { padding: 80px 20px; text-align: center; background: #f9f9f9; }
+    .products h2 { font-size: 36px; margin-bottom: 40px; }
+    .product-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .product {
+      background: white; border-radius: 15px; padding: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .product:hover { transform: translateY(-10px); }
+    .product img { width: 100%; border-radius: 10px; }
+    .product h3 { margin: 15px 0 10px; font-size: 22px; }
+    .product p { color: #555; }
+
+    /* Categories Section */
+    .categories {
+      padding: 80px 20px; background: white; text-align: center;
+    }
+    .categories h2 { font-size: 36px; margin-bottom: 40px; }
+    .category-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .category {
+      background: #ffebf0; border-radius: 20px; padding: 40px;
+      transition: background 0.3s;
+    }
+    .category:hover { background: #ffd1dc; }
+    .category h3 { font-size: 20px; }
+
+    /* Testimonials */
+    .testimonials {
+      padding: 80px 20px; background: #f9f9f9; text-align: center;
+    }
+    .testimonials h2 { font-size: 36px; margin-bottom: 40px; }
+    .testimonial-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .testimonial {
+      background: white; padding: 30px; border-radius: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      font-style: italic;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      padding: 80px 20px; background: #ff4da6; text-align: center; color: white;
+    }
+    .newsletter h2 { font-size: 32px; margin-bottom: 20px; }
+    .newsletter input {
+      padding: 15px; width: 300px; max-width: 90%;
+      border: none; border-radius: 30px; margin-right: 10px;
+    }
+    .newsletter button {
+      padding: 15px 25px; border: none; border-radius: 30px;
+      background: white; color: #ff4da6; font-weight: bold;
+      cursor: pointer; transition: background 0.3s;
+    }
+    .newsletter button:hover { background: #ffe6f0; }
+
+    /* Footer */
+    footer {
+      background: #333; color: white; text-align: center; padding: 30px 20px;
+    }
+    footer p { margin-bottom: 10px; }
+    .socials a { margin: 0 10px; color: white; text-decoration: none; font-size: 20px; }
+    .socials a:hover { color: #ff4da6; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; position: absolute; top: 60px; right: 0; background: #ff4da6; width: 200px; display: none; }
+      nav ul.show { display: block; }
+      nav ul li { margin: 15px 0; text-align: center; }
+      .menu-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="logo">Blissible</div>
+    <div class="menu-toggle">&#9776;</div>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#newsletter">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <h1>Redefining Beauty with Blissible</h1>
+    <p>Your one-stop destination for beauty & wellness</p>
+    <button>Shop Now</button>
+  </section>
+
+  <!-- Products -->
+  <section class="products" id="products">
+    <h2>Featured Products</h2>
+    <div class="product-grid">
+      <div class="product">
+        <img src="blissible lisptick.jpg" alt="Product">
+        <h3>Luxury Lipstick</h3>
+        <p>Long-lasting matte finish</p>
+      </div>
+      <div class="product">
+        <img src="glow serum.jpg" alt="Product">
+        <h3>Glow Serum</h3>
+        <p>Brightens and hydrates your skin</p>
+      </div>
+      <div class="product">
+        <img src="perfume.webp" alt="Product">
+        <h3>Fragrance</h3>
+        <p>Crafted with rose, jasmine & sandalwood for a timeless scent</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="categories" id="categories">
+    <h2>Shop by Category</h2>
+    <div class="category-grid">
+      <div class="category"><h3>Makeup</h3></div>
+      <div class="category"><h3>Skincare</h3></div>
+      <div class="category"><h3>Haircare</h3></div>
+      <div class="category"><h3>Fragrances</h3></div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial">“Blissible has transformed my skincare routine. Love the quality!”</div>
+      <div class="testimonial">“Fast delivery and authentic products. Highly recommended!”</div>
+      <div class="testimonial">“I always find the latest trends on Nykaa. My go-to beauty hub!”</div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter" id="newsletter">
+    <h2>Stay Updated</h2>
+    <p>Subscribe to get exclusive deals and beauty tips</p>
+    <input type="email" placeholder="Enter your email">
+    <button>Subscribe</button>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Blissible. <Blissible_Logo_Home class="https://in.pinterest.com/pin/60517188718433334/"></Blissible_Logo_Home> All rights reserved.</p>
+    <div class="socials">
+      <a href="#">Facebook</a> | 
+      <a href="#">Instagram</a> | 
+      <a href="#">Twitter</a>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('nav ul');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    // Close menu after clicking a link
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('show'));
+    });
+  </script>
+</body>
+</html>
